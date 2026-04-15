@@ -87,8 +87,12 @@ flowchart TB
         Hybrid[Hybrid Evaluator]
     end
 
-    subgraph Utils["Utilities"]
-        RefusalDB[(Refusal Patterns DB)]
+    subgraph Config["Конфигурация"]
+        Patterns[Refusal Patterns<br/>(Python list)]
+        Settings[Настройки<br/>(.env)]
+    end
+
+    subgraph External["Внешний вызов"]
         JudgeLLM[Judge LLM<br/>YandexGPT/GigaChat]
     end
 
@@ -98,8 +102,9 @@ flowchart TB
     Hybrid --> Heuristic
     Hybrid --> LLMJudge
     
-    Heuristic --> RefusalDB
+    Heuristic --> Patterns
     LLMJudge --> JudgeLLM
+    Heuristic --> Settings
 ```
 
 
