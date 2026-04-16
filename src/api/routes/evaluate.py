@@ -7,7 +7,6 @@ from src.services.hybrid import hybrid_evaluate
 
 router = APIRouter()
 
-
 @router.post("/evaluate")
 async def evaluate(request: EvaluateRequest):
     start_time = time.time()
